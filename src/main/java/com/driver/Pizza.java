@@ -29,10 +29,13 @@ public class Pizza {
         return this.price;
     }
 
+
+
     public void addExtraCheese(){
         // your code goes here
         if(!extraCheeseAdded) {
             extraCheeseAdded = true;
+            price +=80;
         }
     }
 
@@ -40,6 +43,8 @@ public class Pizza {
         // your code goes here
         if(!extraToppingsAdded) {
             extraToppingsAdded = true;
+            if(isVeg)price+=70;
+            else price+=120;
         }
     }
 
@@ -47,34 +52,32 @@ public class Pizza {
         // your code goes here
         if(!paperbagAdded) {
             paperbagAdded = true;
+            price+=20;
         }
     }
 
     public String getBill(){
         // your code goes here
-        int total = price;
-
-        bill = "Base Price Of The Pizza: " + this.price + "\n";
+        if(isVeg)
+        bill = "Base Price Of The Pizza: 300 \n";
+        else bill = "Base Price Of The Pizza: 400 \n";
 
         if(extraCheeseAdded){
-            bill += "Extra Cheese Added: " + 80 + "\n";
-            total+=80;
+            bill += "Extra Cheese Added: 80 \n";
         }
         if (extraToppingsAdded) {
             if(isVeg) {
-                bill += "Extra Toppings Added: " + 70 + "\n";
-                total += 70;
+                bill += "Extra Toppings Added: 70 \n";
             }
             else{
-                bill += "Extra Toppings Added: " + 120 + "\n";
-                total += 120;
+                bill += "Extra Toppings Added: 120 \n";
             }
         }
         if (paperbagAdded) {
-            bill += "Paperbag Added: " + 20 + "\n";
-            total+=20;
+            bill += "Paperbag Added: 20\n";
+
         }
-        bill += "Total Price: " + total + "\n";
+        bill += "Total Price: " + price + "\n";
         return this.bill;
     }
 }
